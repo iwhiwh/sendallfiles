@@ -311,7 +311,7 @@ async def language_check(bot, query):
                 [
                     InlineKeyboardButton(
                         text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}",
-                        url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}',
+                        url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}'
 #                    ),
 #                    InlineKeyboardButton(
 #                        text=f"{get_size(file.file_size)}",
