@@ -127,7 +127,7 @@ async def next_page(bot, query):
 #            ]
 #            for file in files
 #        ]
-    elif settings['button'] and not ENABLE_SHORTLINK:
+    if settings['button'] and not ENABLE_SHORTLINK:
         btn = [
             [
                 InlineKeyboardButton(
@@ -297,7 +297,7 @@ async def language_check(bot, query):
 #                ]
 #                for file in files
 #            ]
-        elif settings['button'] and not ENABLE_SHORTLINK:
+        if settings['button'] and not ENABLE_SHORTLINK:
             btn = [
                 [
                     InlineKeyboardButton(
@@ -1487,7 +1487,7 @@ async def auto_filter(client, msg, spoll=False):
 #            ]
 #            for file in files
 #        ]
-    elif settings["button"] and not ENABLE_SHORTLINK:
+    if settings["button"] and not ENABLE_SHORTLINK:
         btn = [
             [
                 InlineKeyboardButton(
