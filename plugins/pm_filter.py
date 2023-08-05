@@ -105,29 +105,29 @@ async def next_page(bot, query):
     else:
         await save_group_settings(query.message.chat.id, 'is_shortlink', False)
         ENABLE_SHORTLINK = False
-#    if ENABLE_SHORTLINK and settings['button']:
-#        btn = [
-#            [
-#                InlineKeyboardButton(
-#                    text=f"[{get_size(file.file_size)}] {file.file_name}", url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
-#                ),
-#            ]
-#            for file in files
-#        ]
-#    elif ENABLE_SHORTLINK and not settings['button']:
-#        btn = [
-#            [
-#                InlineKeyboardButton(
-#                    text=f"{file.file_name}", url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
-#                ),
-#                InlineKeyboardButton(
-#                    text=f"{get_size(file.file_size)}",
-#                    url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
-#                ),
-#            ]
-#            for file in files
-#        ]
-    if settings['button'] and not ENABLE_SHORTLINK:
+   if ENABLE_SHORTLINK and settings['button']:
+        btn = [
+            [
+                InlineKeyboardButton(
+                    text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                ),
+            ]
+            for file in files
+        ]
+    elif ENABLE_SHORTLINK and not settings['button']:
+        btn = [
+            [
+                InlineKeyboardButton(
+                    text=f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                ),
+                InlineKeyboardButton(
+                    text=f"{get_size(file.file_size)}",
+                    url=f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                ),
+            ]
+            for file in files
+        ]
+    elif settings['button'] and not ENABLE_SHORTLINK:
         btn = [
             [
                 InlineKeyboardButton(
@@ -137,19 +137,19 @@ async def next_page(bot, query):
             for file in files
         ]
     else:
-#        btn = [
-#            [
-#                InlineKeyboardButton(
-#                    text=f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://telegram.dog/{temp.U_NAME}?start=files_{file.file_id}"
-#                ),
-#                InlineKeyboardButton(
-#                    text=f"{get_size(file.file_size)}",
-#                    url=f"https://telegram.dog/{temp.U_NAME}?start=files_{file.file_id}",
-#                ),
-#            ]
-#            for file in files
-#        ]
-#    try:
+        btn = [
+            [
+                InlineKeyboardButton(
+                    text=f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://telegram.dog/{temp.U_NAME}?start=files_{file.file_id}"
+                ),
+                InlineKeyboardButton(
+                    text=f"{get_size(file.file_size)}",
+                    url=f"https://telegram.dog/{temp.U_NAME}?start=files_{file.file_id}",
+                ),
+            ]
+            for file in files
+        ]
+    try:
         if settings['auto_delete']:
             btn.insert(0, 
                 [
@@ -274,30 +274,30 @@ async def language_check(bot, query):
             await save_group_settings(query.message.chat.id, 'is_shortlink', False)
             ENABLE_SHORTLINK = False
         pre = 'filep' if settings['file_secure'] else 'file'
-#        if ENABLE_SHORTLINK and settings['button']:
-#            btn = [
-#                [
-#                    InlineKeyboardButton(
-#                        text=f"[{get_size(file.file_size)}] {file.file_name}", url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
-#                    ),
-#                ]
-#                for file in files
-#            ]
-#        elif ENABLE_SHORTLINK and not settings['button']:
-#            btn = [
-#                [
-#                    InlineKeyboardButton(
-#                        text=f"{file.file_name}",
-#                        url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
-#                    ),
-#                    InlineKeyboardButton(
-#                        text=f"{get_size(file.file_size)}",
-#                        url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
-#                    ),
-#                ]
-#                for file in files
-#            ]
-        if settings['button'] and not ENABLE_SHORTLINK:
+        if ENABLE_SHORTLINK and settings['button']:
+            btn = [
+                [
+                    InlineKeyboardButton(
+                        text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                    ),
+                ]
+                for file in files
+            ]
+        elif ENABLE_SHORTLINK and not settings['button']:
+            btn = [
+                [
+                    InlineKeyboardButton(
+                        text=f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}",
+                        url=f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                    ),
+                    InlineKeyboardButton(
+                        text=f"{get_size(file.file_size)}",
+                        url=f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                    ),
+                ]
+                for file in files
+            ]
+        elif settings['button'] and not ENABLE_SHORTLINK:
             btn = [
                 [
                     InlineKeyboardButton(
@@ -307,21 +307,21 @@ async def language_check(bot, query):
                 for file in files
             ]
         else:
-#            btn = [
-#                [
-#                    InlineKeyboardButton(
-#                        text=f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}",
-#                        callback_data=f'{pre}#{file.file_id}',
-#                    ),
-#                    InlineKeyboardButton(
-#                        text=f"{get_size(file.file_size)}",
-#                        callback_data=f'{pre}#{file.file_id}',
-#                    ),
-#                ]
-#                for file in files
-#            ]
-#
-#        try:
+            btn = [
+                [
+                    InlineKeyboardButton(
+                        text=f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}",
+                        callback_data=f'{pre}#{file.file_id}',
+                    ),
+                    InlineKeyboardButton(
+                        text=f"{get_size(file.file_size)}",
+                        callback_data=f'{pre}#{file.file_id}',
+                    ),
+                ]
+                for file in files
+            ]
+
+        try:
             if settings['auto_delete']:
                 btn.insert(0, 
                     [
@@ -1464,30 +1464,30 @@ async def auto_filter(client, msg, spoll=False):
         await save_group_settings(message.chat.id, 'is_shortlink', False)
         ENABLE_SHORTLINK = False
     pre = 'filep' if settings['file_secure'] else 'file'
-#    if ENABLE_SHORTLINK and settings["button"]:
-#        btn = [
-#            [
-#                InlineKeyboardButton(
-#                    text=f"[{get_size(file.file_size)}] {file.file_name}", url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
-#                ),
-#            ]
-#            for file in files
-#        ]
-#    elif ENABLE_SHORTLINK and not settings["button"]:
-#        btn = [
-#            [
-#                InlineKeyboardButton(
-#                    text=f"{file.file_name}",
-#                    url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
-#                ),
-#                InlineKeyboardButton(
-#                    text=f"{get_size(file.file_size)}",
-#                    url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
-#                ),
-#            ]
-#            for file in files
-#        ]
-    if settings["button"] and not ENABLE_SHORTLINK:
+    if ENABLE_SHORTLINK and settings["button"]:
+        btn = [
+            [
+                InlineKeyboardButton(
+                    text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                ),
+            ]
+            for file in files
+        ]
+    elif ENABLE_SHORTLINK and not settings["button"]:
+        btn = [
+            [
+                InlineKeyboardButton(
+                    text=f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}",
+                    url=f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                ),
+                InlineKeyboardButton(
+                    text=f"{get_size(file.file_size)}",
+                    url=f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                ),
+            ]
+            for file in files
+        ]
+    elif settings["button"] and not ENABLE_SHORTLINK:
         btn = [
             [
                 InlineKeyboardButton(
@@ -1497,20 +1497,20 @@ async def auto_filter(client, msg, spoll=False):
             for file in files
         ]
     else:
-#        btn = [
-#            [
-#                InlineKeyboardButton(
-#                    text=f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}",
-#                    url=f"https://telegram.dog/{temp.U_NAME}?start=files_{file.file_id}",
-#                ),
-#                InlineKeyboardButton(
-#                    text=f"{get_size(file.file_size)}",
-#                    url=f"https://telegram.dog/{temp.U_NAME}?start=files_{file.file_id}",
-#                ),
-#            ]
-#            for file in files
-#        ]
-#    try:
+        btn = [
+            [
+                InlineKeyboardButton(
+                    text=f"{' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}",
+                    url=f"https://telegram.dog/{temp.U_NAME}?start=files_{file.file_id}",
+                ),
+                InlineKeyboardButton(
+                    text=f"{get_size(file.file_size)}",
+                    url=f"https://telegram.dog/{temp.U_NAME}?start=files_{file.file_id}",
+                ),
+            ]
+            for file in files
+        ]
+    try:
         if settings['auto_delete']:
             btn.insert(0, 
                 [
