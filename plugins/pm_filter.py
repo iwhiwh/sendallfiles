@@ -158,7 +158,7 @@ async def next_page(bot, query):
                     InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
                 ]
             )
-        else:
+#        else:
             btn.insert(0, 
                 [
                     InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
@@ -331,7 +331,7 @@ async def language_check(bot, query):
                     ]
                 )
 
-            else:
+#            else:
                 btn.insert(0, 
                     [
                         InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
@@ -1519,7 +1519,7 @@ async def auto_filter(client, msg, spoll=False):
                     InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
                 ]
             )
-        else:
+#        else:
             btn.insert(0, 
                 [
                     InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
