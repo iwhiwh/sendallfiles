@@ -1504,7 +1504,7 @@ async def auto_filter(client, msg, spoll=False):
                     url=f"https://telegram.dog/{temp.U_NAME}?start=files_{file.file_id}",
                 ),
                 InlineKeyboardButton(
-                    text=f"{get_size(file.file_size)} {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.')",
+                    text=f"{get_size(file.file_size)}",
                     url=f"https://telegram.dog/{temp.U_NAME}?start=files_{file.file_id}",
                 ),
             ]
