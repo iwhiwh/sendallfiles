@@ -150,7 +150,7 @@ async def next_page(bot, query):
 #            for file in files
 #        ]
 #    try:
-#        if settings['auto_delete']:
+        if settings['auto_delete']:
             btn.insert(0, 
                 [
                     InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
@@ -322,7 +322,7 @@ async def language_check(bot, query):
 #            ]
 #
 #        try:
-#            if settings['auto_delete']:
+            if settings['auto_delete']:
                 btn.insert(0, 
                     [
                         InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
@@ -1511,7 +1511,7 @@ async def auto_filter(client, msg, spoll=False):
 #            for file in files
 #        ]
 #    try:
-#        if settings['auto_delete']:
+        if settings['auto_delete']:
             btn.insert(0, 
                 [
                     InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
