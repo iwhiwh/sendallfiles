@@ -686,7 +686,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if not files_:
             return await query.answer('Nᴏ sᴜᴄʜ ғɪʟᴇ ᴇxɪsᴛ.')
         files = files_[0]
-        title = files.file_name
+        title = {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}
         size = get_size(files.file_size)
         f_caption = files.caption
         settings = await get_settings(query.message.chat.id)
