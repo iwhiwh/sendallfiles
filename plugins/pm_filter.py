@@ -151,29 +151,6 @@ async def next_page(bot, query):
         ]
     try:
         if settings['auto_delete']:
-            btn.insert(0, 
-                [
-                    InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
-                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-                ]
-            )
-        else:
-            btn.insert(0, 
-                [
-                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-                ]
-            )            
-    except KeyError:
-        await save_group_settings(query.message.chat.id, 'auto_delete', True)
-        btn.insert(0, 
-            [
-                InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
-                InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-            ]
-        )
     try:
         if settings['max_btn']:
             if 0 < offset <= 10:
@@ -187,7 +164,7 @@ async def next_page(bot, query):
                     [InlineKeyboardButton("⫷⫷✮", callback_data=f"next_{req}_{key}_{off_set}"), InlineKeyboardButton(f"{math.ceil(int(offset)/10)+1} / {math.ceil(total/10)}", callback_data="pages")]
                 )
             elif off_set is None:
-                btn.append([InlineKeyboardButton("𝐏𝐀𝐆𝐄", callback_data="pages"), InlineKeyboardButton(f"{math.ceil(int(offset)/10)+1} / {math.ceil(total/10)}", callback_data="pages"), InlineKeyboardButton("✮⫸⫸", callback_data=f"next_{req}_{key}_{n_offset}")])
+                btn.append([InlineKeyboardButton("🄿🄰🄶🄴", callback_data="pages"), InlineKeyboardButton(f"{math.ceil(int(offset)/10)+1} / {math.ceil(total/10)}", callback_data="pages"), InlineKeyboardButton("✮⫸⫸", callback_data=f"next_{req}_{key}_{n_offset}")])
             else:
                 btn.append(
                     [
@@ -784,7 +761,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             protect_content=True if ident == 'checksubp' else False,
             reply_markup=InlineKeyboardMarkup(
                 [[
-                  InlineKeyboardButton('❤️‍🔥 ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ❤️‍🔥', url=CHNL_LNK)
+                  InlineKeyboardButton('❤️‍🔥 ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ ❤️‍🔥', url=CHNL_LNK)
                 ]]
             )
         )
