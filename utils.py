@@ -654,7 +654,7 @@ async def send_all(bot, userid, files, ident):
                 protect_content=True if ident == "filep" else False,
                 reply_markup=InlineKeyboardMarkup(
                     [[
-                      InlineKeyboardButton('Uᴘᴅᴀᴛᴇ ♥️', url="https://t.me/Movies_adda24_7")
+                      InlineKeyboardButton('❤️‍🔥 ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ ❤️‍🔥', url="https://t.me/The_Happy_Hour_Hindi")
                     ]]
                 )
             )
